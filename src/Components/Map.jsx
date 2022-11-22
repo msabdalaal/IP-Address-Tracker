@@ -7,6 +7,8 @@ function Map({ ip }) {
   return (
     <>
       <iframe
+        title="My-Map"
+        name="My-Map"
         loading="lazy"
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"
