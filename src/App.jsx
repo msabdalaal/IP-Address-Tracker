@@ -23,6 +23,11 @@ function App() {
       alert("enter valid ip adress");
     }
   }
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  }
   return (
     <main className="">
       <img src={BG_Image} alt="" className="fixed -z-10 top-0 h-2/4" />
@@ -37,8 +42,10 @@ function App() {
           placeholder="Search for any IP address or domain"
           value={searchVlaue}
           onChange={(e) => handleChange(e)}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
         <button
+          tabIndex="-1"
           onClick={handleClick}
           className="mr-7 bold w-10 bg-black text-white h-10 rounded-r-lg"
         >
