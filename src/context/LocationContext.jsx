@@ -1,35 +1,35 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import { createContext, useContext, useEffect, useState } from "react"
+import PropTypes from "prop-types"
 
 export const LocationContext = createContext(null)
 
 export default function LocationProvider({ children }) {
   const [locationData, setLocationData] = useState({
-    ip: '000.00.000.000',
-    country: '$$',
-    city: '$$$',
+    ip: "000.00.000.000",
+    country: "$$",
+    city: "$$$",
     timezone: {
-      utc: '$$$',
+      utc: "$$$",
     },
     connection: {
-      isp: '$$$',
+      isp: "$$$",
     },
   })
-  const [ip, setIp] = useState('')
+  const [ip, setIp] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetch(`https://ipwho.is/${ip ? ip : ''}`)
+        const result = await fetch(`https://ipwho.is/${ip ? ip : ""}`)
         const data = await result.json()
 
         if (data.success === true) setLocationData(data)
         else if (ip)
           throw new Error(
-            'Sorry, service is not available at the moment, try again late'
+            "Sorry, service is not available at the moment, try again late"
           )
       } catch (error) {
-        console.error('not available')
+        console.error("not available")
         alert(error.message)
       }
     }
